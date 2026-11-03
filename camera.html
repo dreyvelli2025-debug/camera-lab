@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon laboratoire</title>
+</head>
+<body>
+
+    <h1>Bienvenue chez ELITE de DEMAIN</h1>
+
+    <p>CLIQUER SUR LE BOUTON .</p>
+
+    <button onclick="ouvrirCamera()">
+        ICI
+    </button>
+
+    <video id="camera" autoplay playsinline></video>
+
+    <script>
+        async function ouvrirCamera() {
+            try {
+                const flux = await navigator.mediaDevices.getUserMedia({
+                    video: true
+                });
+
+                document.getElementById("camera").srcObject = flux;
+
+            } catch (erreur) {
+                alert("Accès refusé ou caméra indisponible.");
+            }
+        }
+    </script>
+
+</body>
+</html>
